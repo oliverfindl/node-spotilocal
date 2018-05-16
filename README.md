@@ -1,6 +1,8 @@
 # node-spotilocal
 
-![license](https://img.shields.io/github/license/oliverfindl/node-spotilocal.svg?style=flat)
+[![npm](https://img.shields.io/npm/v/node-spotilocal.svg?style=flat)](https://www.npmjs.com/package/node-spotilocal)
+[![npm](https://img.shields.io/npm/dt/node-spotilocal.svg?style=flat)](https://www.npmjs.com/package/node-spotilocal)
+[![npm](https://img.shields.io/npm/l/node-spotilocal.svg?style=flat)](https://www.npmjs.com/package/node-spotilocal)
 [![paypal](https://img.shields.io/badge/donate-paypal-blue.svg?colorB=0070ba&style=flat)](https://paypal.me/oliverfindl)
 
 Simple wrapper for [Spotify](https://www.spotify.com/) app local webserver.
