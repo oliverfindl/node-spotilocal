@@ -1,5 +1,5 @@
 /**
- * node-spotilocal v1.0.1 (2018-05-16)
+ * node-spotilocal v1.0.2 (2018-05-17)
  * Copyright 2018 Oliver Findl
  * @license MIT
  */
@@ -9,7 +9,7 @@
 const { sampleSize } = require("lodash");
 const { get } = require("axios");
 
-export default class Spotilocal {
+class Spotilocal {
 
 	constructor() {
 		this.ssl = false;
@@ -49,7 +49,7 @@ export default class Spotilocal {
 		if(!port || port < limit.min) port = limit.min;
 		else if(port > limit.max) port = limit.max;
 
-		for(this.port = port; this.port < limit.max; this.port++) {
+		for(this.port = port; this.port <= limit.max; this.port++) {
 			try {
 				console.log("Testing port: %d", this.port);
 				await this._version();
@@ -135,6 +135,10 @@ export default class Spotilocal {
 		}
 	}
 
+	_revoke() {
+		return this.csrf = this.oauth = "";
+	}
+
 	async status() {
 		try {
 			return await this._auth() && await this._json(this._url("/remote/status.json"), {
@@ -179,3 +183,5 @@ export default class Spotilocal {
 	}
 
 }
+
+module.exports = Spotilocal;

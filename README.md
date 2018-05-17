@@ -20,11 +20,16 @@ Via [yarn](https://yarnpkg.com/en/) [[package](https://yarnpkg.com/en/package/no
 ## Usage
 
 ``` javascript
-// import lib
-import * from "node-spotilocal";
+// require lib
+const Spotilocal = require("node-spotilocal");
 
 // init lib
 const spotify = new Spotilocal();
+
+// [optional] get auth tokens from Spotify app or auth process will execute with first request
+spotify._auth().then(tokens => {
+	// ...
+}).catch(console.error);
 
 // play track
 spotify.play("spotify:track:1qCQTy0fTXerET4x8VHyr9").then(console.log).catch(console.error);
@@ -37,6 +42,9 @@ spotify.unpause().then(console.log).catch(console.error);
 
 // get current status
 spotify.status().then(console.log).catch(console.error);
+
+// [optional] revoke auth tokens
+spotify._revoke();
 ```
 
 ---

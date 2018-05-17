@@ -1,6 +1,6 @@
 {
 	"name": "node-spotilocal",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Simple wrapper for Spotify local webserver.",
 	"main": "src/index.js",
 	"repository": {
