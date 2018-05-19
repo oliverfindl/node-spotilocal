@@ -1,5 +1,5 @@
 /**
- * node-spotilocal v1.0.2 (2018-05-17)
+ * node-spotilocal v1.0.3 (2018-05-19)
  * Copyright 2018 Oliver Findl
  * @license MIT
  */
@@ -136,16 +136,18 @@ class Spotilocal {
 	}
 
 	_revoke() {
-		return this.csrf = this.oauth = "";
+		this.csrf = "";
+		this.oauth = "";
+		return;
 	}
 
-	async status() {
+	async status(returnOn = ["login", "logout", "play", "pause", "error", "ap"], returnAfter = 0) {
 		try {
 			return await this._auth() && await this._json(this._url("/remote/status.json"), {
 				csrf: this.csrf,
 				oauth: this.oauth,
-				returnafter: 0,
-				returnon: ["login", "logout", "play", "pause", "error", "ap"].join(",")
+				returnon: (!Array.isArray(returnOn) ? [].push(returnOn) : returnOn).join(","),
+				returnafter: !isNaN(returnAfter) ? parseInt(returnAfter) : 0
 			});
 		} catch(err) {
 			throw err;
@@ -155,7 +157,7 @@ class Spotilocal {
 	async play(spotifyUri = "") {
 		if(!/^spotify:track:[\w\d]+$/.test(spotifyUri)) throw new Error("Bad Spotify track URI!");
 		try {
-			return await this._auth() && await this._json(this._url("/remote/play.json?action=queue"), {
+			return await this._auth() && await this._json(this._url("/remote/play.json"), {
 				csrf: this.csrf,
 				oauth: this.oauth,
 				uri: spotifyUri,

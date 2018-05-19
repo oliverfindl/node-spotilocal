@@ -40,8 +40,8 @@ spotify.pause().then(console.log).catch(console.error);
 // unpause track
 spotify.unpause().then(console.log).catch(console.error);
 
-// get current status
-spotify.status().then(console.log).catch(console.error);
+// get app status on particular events (default: ["login", "logout", "play", "pause", "error", "ap"]) or after X seconds (default: 0; 0 = disabled)
+spotify.status(["login", "logout", "play", "pause", "error", "ap"], 0).then(console.log).catch(console.error);
 
 // [optional] revoke auth tokens
 spotify._revoke();
