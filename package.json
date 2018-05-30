@@ -1,8 +1,11 @@
 {
 	"name": "node-spotilocal",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Simple wrapper for Spotify local webserver.",
 	"main": "src/index.js",
+	"files": [
+		"src/*.js"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/oliverfindl/node-spotilocal.git"

@@ -1,5 +1,5 @@
 /**
- * node-spotilocal v1.0.3 (2018-05-19)
+ * node-spotilocal v1.0.4 (2018-05-30)
  * Copyright 2018 Oliver Findl
  * @license MIT
  */
@@ -9,9 +9,12 @@
 const { sampleSize } = require("lodash");
 const { get } = require("axios");
 
+const DEFAULT_OPTIONS = Object.freeze({ verbose: false });
+
 class Spotilocal {
 
-	constructor() {
+	constructor(options = {}) {
+		this.options = Object.assign({}, DEFAULT_OPTIONS, options);
 		this.ssl = false;
 		this.protocol = "";
 		this.hostname = "";
@@ -51,13 +54,13 @@ class Spotilocal {
 
 		for(this.port = port; this.port <= limit.max; this.port++) {
 			try {
-				console.log("Testing port: %d", this.port);
+				if(this.options.verbose) console.log(`Testing port: ${this.port}`);
 				await this._version();
-				console.log("Port found: %d", this.port);
+				if(this.options.verbose) console.log(`Port found: ${this.port}`);
 				return this.port;
 			} catch(err) {
 				// throw err;
-				if(this.port >= limit.max) throw new Error("Port not found!");
+				if(this.port >= limit.max) throw new Error("Port not found! Please make sure, that Spotify app is running.");
 			}
 		}	
 	}
