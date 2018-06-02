@@ -1,5 +1,5 @@
 /**
- * node-spotilocal v1.0.4 (2018-05-30)
+ * node-spotilocal v1.0.5 (2018-06-02)
  * Copyright 2018 Oliver Findl
  * @license MIT
  */

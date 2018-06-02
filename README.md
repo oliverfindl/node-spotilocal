@@ -12,14 +12,18 @@ Simple wrapper for [Spotify](https://www.spotify.com/) app local webserver.
 ## Install
 
 Via [npm](https://npmjs.com/) [[package](https://www.npmjs.com/package/node-spotilocal)]:
-> `npm install node-spotilocal`
+```bash
+$ npm install node-spotilocal
+```
 
 Via [yarn](https://yarnpkg.com/en/) [[package](https://yarnpkg.com/en/package/node-spotilocal)]:
-> `yarn add node-spotilocal`
+```bash
+$ yarn add node-spotilocal
+```
 
 ## Usage
 
-``` javascript
+```javascript
 // require lib
 const Spotilocal = require("node-spotilocal");
 
