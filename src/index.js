@@ -1,5 +1,6 @@
 /**
- * node-spotilocal v1.0.5 (2018-06-02)
+ * [DEPRECATED]
+ * node-spotilocal v1.0.6 (2018-09-15)
  * Copyright 2018 Oliver Findl
  * @license MIT
  */
@@ -74,10 +75,10 @@ class Spotilocal {
 			const res = await get(url, {
 				params,
 				headers: {
-					origin: "https://open.spotify.com"
+					origin: "https://open.spotify.com/"
 				}
 			});
-			if(res.hasOwnProperty("status") && [200, 304].indexOf(res.status) > -1 && res.hasOwnProperty("data")) return res.data;
+			if(res.hasOwnProperty("status") && [200, 204, 304].includes(res.status) && res.hasOwnProperty("data")) return res.data;
 			else throw new Error("Bad response!");
 		} catch(err) {
 			throw err;
